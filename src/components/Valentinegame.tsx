@@ -247,7 +247,7 @@ const FinalScreen = () => {
         <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 bg-rose-400 rounded-full blur-[40px] -z-10" />
       </div>
       <div className="bg-rose-50 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border-4 border-white italic text-rose-700 font-black text-xl md:text-2xl leading-relaxed shadow-inner mb-10 shadow-rose-100">
-        "You passed every level, just like you won my heart. I love you endlessly, Pookie!"
+        "You passed every level, just like you won my heart. You are the most special person in the world. I am truly truly grateful that I have you. I love you endlessly, my Cuchuuu! I will always keep you safely in my heart and cherish you forever. You are my everything, my love, my life, my soulmate. Thank you for being you and for loving me. I am the luckiest person alive to have you as my Valentine. Here's to us and our infinite love! 💖"
       </div>
       <div className="h-8 w-full bg-rose-100 rounded-full overflow-hidden relative border-4 border-white shadow-inner mx-auto">
         <motion.div initial={{ width: 0 }} animate={{ width: `${width}%` }} transition={{ duration: 2.5, ease: "easeOut" }} className="h-full bg-gradient-to-r from-rose-400 via-pink-500 to-rose-600 shadow-md" />
