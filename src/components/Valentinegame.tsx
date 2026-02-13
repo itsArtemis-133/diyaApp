@@ -15,55 +15,55 @@ interface QuizProps {
   onNext: () => void;
 }
 
-/* --- Quiz Data with Cute Kitten & Hamster Images --- */
+/* --- Stable Kitten & Hamster Mix (Guaranteed to Load) --- */
 const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question: "What's our 'perfect' date vibe? ✨",
     options: ["Fancy dinner & dressing up", "Cuddling & watching movies", "Late night walks & deep talks", "Trying new food together"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/11878401495645523316_0",
+    image: "https://placekitten.com/500/350",
   },
   {
     id: 2,
     question: "How much do I love you? 🌙",
     options: ["To the moon and back", "More than pizza (huge deal!)", "Infinity is just the start", "More than words can say"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/15695013536062568939_0",
+    image: "https://cdn.pixabay.com/photo/2016/10/26/18/59/hamster-1772240_640.jpg",
   },
   {
     id: 3,
     question: "Which emoji describes us best? 👩‍❤️‍👨",
     options: ["👩‍❤️‍👨 (The Classics)", "💖 (The Romantics)", "🍕 (The Foodies)", "♾️ (The Forevers)"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/11878401495645523316_1",
+    image: "https://placekitten.com/501/351",
   },
   {
     id: 4,
     question: "What is my absolute favorite thing about you? ❤️",
     options: ["Your beautiful smile", "How you handle me", "Your chaotic energy", "Every single thing!"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/15695013536062568939_1",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pearl_Winter_White_Russian_Dwarf_Hamster_-_Front.jpg/640px-Pearl_Winter_White_Russian_Dwarf_Hamster_-_Front.jpg",
   },
   {
     id: 5,
     question: "How much of a 'cuchuu' are you being today? 🥰",
     options: ["100% Cuchuu", "Maximum Cuchuu", "Ultra Cuchuu", "Infinite Cuchuu!"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/11878401495645523316_2",
+    image: "https://placekitten.com/499/349",
   },
   {
     id: 6,
     question: "If we were animals, we'd be a cute 'hamster' pair, right? 🐹",
     options: ["Yes, definitely!", "The cutest hamsters ever", "Hamster energy only", "Squeak squeak! (Yes)"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/15695013536062568939_2",
+    image: "https://cdn.pixabay.com/photo/2014/10/01/10/44/hamster-468213_640.jpg",
   },
   {
     id: 7,
     question: "Who is my one and only 'my baby pie'? 🥧",
     options: ["Me!", "Only me", "Obviously me", "Your Baby Pie forever"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/11878401495645523316_3",
+    image: "https://placekitten.com/502/352",
   },
   {
     id: 8,
     question: "Final Step: Give me a big 'chu' before we move on! 💋",
     options: ["*Gives a Chu*", "*Big Chu*", "*The biggest Chu*", "Mwahh!"],
-    image: "http://googleusercontent.com/image_collection/image_retrieval/15695013536062568939_3",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Hamster_with_cheek_pouches_full.jpg/640px-Hamster_with_cheek_pouches_full.jpg",
   }
 ];
 
