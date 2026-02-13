@@ -1,69 +1,70 @@
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// 1. LOCAL IMAGE IMPORTS (Matching your screenshot exactly)
+import ham1 from "../images/hamimage1.jpeg";
+import ham2 from "../images/hamimage2.jpeg";
+import ham3 from "../images/hamimage3.jpeg";
+import ham4 from "../images/hamimage4.jpeg";
+import ham5 from "../images/hamimage5.jpeg";
+import ham6 from "../images/hamimage6.jpeg";
+import ham7 from "../images/hamimage7.jpg"; // Note: .jpg
+import ham8 from "../images/hamimage8.jpg"; // Note: .jpg
+
 /* --- Types --- */
 interface Heart { id: number; left: number; top: number; size: number; emoji: string; delay: number; drift: number; }
+interface QuizQuestion { id: number; question: string; options: string[]; image: string; }
+interface QuizProps { onNext: () => void; }
 
-interface QuizQuestion {
-  id: number;
-  question: string;
-  options: string[];
-  image: string; 
-}
-
-interface QuizProps {
-  onNext: () => void;
-}
-
-/* --- Stable Kitten & Hamster Mix (Guaranteed to Load) --- */
+/* --- 2. UPDATED QUIZ DATA --- */
 const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: 1,
     question: "What's our 'perfect' date vibe? ✨",
     options: ["Fancy dinner & dressing up", "Cuddling & watching movies", "Late night walks & deep talks", "Trying new food together"],
-    image: "https://placekitten.com/500/350",
+    image: ham1,
   },
   {
     id: 2,
     question: "How much do I love you? 🌙",
     options: ["To the moon and back", "More than pizza (huge deal!)", "Infinity is just the start", "More than words can say"],
-    image: "https://cdn.pixabay.com/photo/2016/10/26/18/59/hamster-1772240_640.jpg",
+    image: ham2,
   },
   {
     id: 3,
     question: "Which emoji describes us best? 👩‍❤️‍👨",
     options: ["👩‍❤️‍👨 (The Classics)", "💖 (The Romantics)", "🍕 (The Foodies)", "♾️ (The Forevers)"],
-    image: "https://placekitten.com/501/351",
+    image: ham3,
   },
   {
     id: 4,
     question: "What is my absolute favorite thing about you? ❤️",
     options: ["Your beautiful smile", "How you handle me", "Your chaotic energy", "Every single thing!"],
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Pearl_Winter_White_Russian_Dwarf_Hamster_-_Front.jpg/640px-Pearl_Winter_White_Russian_Dwarf_Hamster_-_Front.jpg",
+    image: ham4,
   },
   {
     id: 5,
     question: "How much of a 'cuchuu' are you being today? 🥰",
     options: ["100% Cuchuu", "Maximum Cuchuu", "Ultra Cuchuu", "Infinite Cuchuu!"],
-    image: "https://placekitten.com/499/349",
+    image: ham5,
   },
   {
     id: 6,
     question: "If we were animals, we'd be a cute 'hamster' pair, right? 🐹",
     options: ["Yes, definitely!", "The cutest hamsters ever", "Hamster energy only", "Squeak squeak! (Yes)"],
-    image: "https://cdn.pixabay.com/photo/2014/10/01/10/44/hamster-468213_640.jpg",
+    image: ham6,
   },
   {
     id: 7,
     question: "Who is my one and only 'my baby pie'? 🥧",
     options: ["Me!", "Only me", "Obviously me", "Your Baby Pie forever"],
-    image: "https://placekitten.com/502/352",
+    image: ham7,
   },
   {
     id: 8,
     question: "Final Step: Give me a big 'chu' before we move on! 💋",
     options: ["*Gives a Chu*", "*Big Chu*", "*The biggest Chu*", "Mwahh!"],
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Hamster_with_cheek_pouches_full.jpg/640px-Hamster_with_cheek_pouches_full.jpg",
+    image: ham8,
   }
 ];
 
@@ -71,6 +72,7 @@ const ValentineGame = () => {
   const [step, setStep] = useState(1);
   const [clicks, setClicks] = useState(0);
 
+  // Lazy Initialization for Background Hearts (Fixes Purity Errors)
   const [hearts] = useState<Heart[]>(() => 
     Array.from({ length: 20 }).map((_, i) => ({
       id: i, 
@@ -90,7 +92,7 @@ const ValentineGame = () => {
       <div className="absolute top-12 flex items-center justify-center w-full max-w-xs z-30 px-4">
         {[1, 2, 3].map((num) => (
           <div key={num} className="flex items-center flex-1 last:flex-none">
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-black transition-all duration-700 shadow-lg border-4 ${step >= num ? 'bg-rose-500 border-white text-white shadow-rose-200' : 'bg-white border-rose-100 text-rose-200'}`}>
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-black transition-all duration-700 shadow-lg border-4 ${step >= num ? 'bg-rose-500 border-white text-white' : 'bg-white border-rose-100 text-rose-200'}`}>
               {step > num ? "✓" : num}
             </div>
             {num < 3 && (
@@ -147,21 +149,24 @@ const Level1Quiz = ({ onNext }: QuizProps) => {
           Quest Step {currentQ + 1} of 8
         </span>
 
-        <motion.img 
-          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
-          src={activeQuestion.image} 
-          className="w-full h-48 object-cover rounded-3xl shadow-md mb-6 border-4 border-white"
-          alt="Cute Kitten/Hamster"
-        />
+        <div className="w-full aspect-square max-w-sm mx-auto overflow-hidden rounded-3xl shadow-md border-4 border-white mb-6 bg-rose-100 flex items-center justify-center">
+          <motion.img 
+            initial={{ opacity: 0, scale: 0.9 }} 
+            animate={{ opacity: 1, scale: 1 }}
+            src={activeQuestion.image} 
+            className="w-full h-full object-cover"
+            alt="Hamster Moment"
+          />
+        </div>
 
-        <div className="flex gap-1 w-full h-1.5 px-4">
+        <div className="flex gap-1 w-full h-1.5 px-4 mb-4">
           {QUIZ_QUESTIONS.map((_, i) => (
             <div key={i} className={`flex-1 rounded-full transition-all duration-700 ${i <= currentQ ? 'bg-rose-500 shadow-md shadow-rose-200' : 'bg-rose-100'}`} />
           ))}
         </div>
       </div>
 
-      <h2 className="text-2xl font-black text-rose-600 mb-8 leading-tight">{activeQuestion.question}</h2>
+      <h2 className="text-xl md:text-2xl font-black text-rose-600 mb-6 leading-tight">{activeQuestion.question}</h2>
 
       <div className="space-y-4 text-left px-2">
         {activeQuestion.options.map((o, i) => (
@@ -224,12 +229,12 @@ const Level3Meter = ({ clicks, setClicks, onNext }: Level3MeterProps) => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center font-sans">
       <span className="bg-rose-100 text-rose-500 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">The Speed Test</span>
-      <h2 className="text-3xl font-black text-rose-600 mb-10 leading-tight text-balance">Fill The Meter With Love! ❤️</h2>
+      <h2 className="text-3xl font-black text-rose-600 mb-10 leading-tight">Fill The Meter With Love! ❤️</h2>
       <div onClick={() => active && setClicks((p: number) => p + 1)} className={`text-[120px] mb-8 cursor-pointer select-none transition-transform active:scale-90 ${active ? 'animate-bounce drop-shadow-2xl' : 'opacity-80 grayscale-[30%]'}`}>❤️</div>
       <div className="h-6 w-full bg-rose-50 rounded-full overflow-hidden mb-8 border-4 border-white shadow-inner mx-auto">
         <motion.div className="h-full bg-gradient-to-r from-rose-400 to-rose-600 shadow-lg shadow-rose-200" animate={{ width: `${Math.min(clicks * 2.5, 100)}%` }} transition={{ type: "spring", damping: 10 }} />
       </div>
-      <p className="text-rose-600 font-black text-2xl mb-8 uppercase tracking-widest">Love Points: {clicks}</p>
+      <p className="text-rose-600 font-black text-2xl mb-8 uppercase tracking-widest">Power: {clicks}</p>
       {!active && clicks === 0 ? <button onClick={start} className="w-full bg-rose-600 text-white py-5 rounded-3xl font-black text-xl shadow-xl hover:scale-105 transition-all">START TAPPING 🔥</button> : !active && <button onClick={onNext} className="w-full bg-rose-600 text-white py-5 rounded-3xl font-black text-xl shadow-xl hover:scale-105 transition-all">SEE THE SURPRISE ✨</button>}
     </motion.div>
   );
@@ -246,7 +251,7 @@ const FinalScreen = () => {
         💖
         <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 bg-rose-400 rounded-full blur-[40px] -z-10" />
       </div>
-      <div className="bg-rose-50 p-8 rounded-[2.5rem] border-4 border-white italic text-rose-700 font-black text-2xl leading-relaxed shadow-inner mb-10 shadow-rose-100 text-balance">
+      <div className="bg-rose-50 p-8 rounded-[2.5rem] border-4 border-white italic text-rose-700 font-black text-2xl leading-relaxed shadow-inner mb-10 shadow-rose-100">
         "You passed every level, just like you won my heart. I love you endlessly, Pookie!"
       </div>
       <div className="h-8 w-full bg-rose-100 rounded-full overflow-hidden relative border-4 border-white shadow-inner mx-auto">
